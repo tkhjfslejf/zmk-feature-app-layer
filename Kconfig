@@ -1,0 +1,4 @@
+menuconfig ZMK_APP_LAYER_AUTOSWITCH
+    bool "Automatic application layer switching"
+    depends on RAW_HID
+    default y
