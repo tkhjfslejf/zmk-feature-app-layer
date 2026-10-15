@@ -40,7 +40,7 @@ static int raw_hid_received_event_listener(const zmk_event_t *eh)
         return ZMK_EV_EVENT_BUBBLE;
     }
 
-    int ret = zmk_keymap_layer_to(target, true);
+    int ret = zmk_keymap_layer_to(target);
 
     if (ret < 0) {
         LOG_ERR("Failed to switch to layer %u: %d", target, ret);
