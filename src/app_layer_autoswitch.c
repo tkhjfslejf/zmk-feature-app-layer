@@ -40,14 +40,18 @@ static int raw_hid_received_event_listener(const zmk_event_t *eh)
         return ZMK_EV_EVENT_BUBBLE;
     }
 
-    int ret = zmk_keymap_layer_to(target);
+    zmk_keymap_layer_index_t active_layer = zmk_keymap_highest_layer_active();
 
-    if (ret < 0) {
-        LOG_ERR("Failed to switch to layer %u: %d", target, ret);
-    } else {
-        LOG_INF("Application layer switched to %u", target);
+    if (active_layer != target){
+        int ret = zmk_keymap_layer_to(target);
+    
+        if (ret < 0) {
+            LOG_ERR("Failed to switch to layer %u: %d", target, ret);
+        } else {
+            LOG_INF("Application layer switched to %u", target);
+        }
     }
-
+    
     return ZMK_EV_EVENT_BUBBLE;
 }
 
