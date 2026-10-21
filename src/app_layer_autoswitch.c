@@ -50,6 +50,8 @@ static int raw_hid_received_event_listener(const zmk_event_t *eh)
         } else {
             LOG_INF("Application layer switched to %u", target);
         }
+    }else{
+        LOG_INF("The current layer is already %u,No need to switch", target);
     }
     
     return ZMK_EV_EVENT_BUBBLE;
